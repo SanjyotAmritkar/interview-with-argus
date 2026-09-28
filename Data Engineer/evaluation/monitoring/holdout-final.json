@@ -1,0 +1,874 @@
+{
+  "baseline": {
+    "catalog_versions": [
+      "candidate-models-v1"
+    ],
+    "config": {
+      "current_char_budget": 24000,
+      "history_chunks": 12,
+      "implementation_hash": "ebfdf7eb15afc9b7415802efb6e10978cf456832273b2fd9f804c637ff4abc53",
+      "model": "anthropic-fast-v1",
+      "parser_version": "html-text-v1",
+      "pipeline_version": "net-new-v2",
+      "prompt_hash": "ac4036f632796348ca1ff409b55bbe3dd8523d31be3f35f0b97728996832930e",
+      "provider": "litellm"
+    },
+    "dataset_fingerprint": "d0c84c4e616f1b9bb8a5b89cac206901623993384b41c9c7aed6c8da37eb8da3",
+    "execution_mode": "cache",
+    "latency_source": "historical_generation",
+    "mean_input_tokens": 13092.777777777777,
+    "median_ms_per_output_token": 18.936245311902027,
+    "original_run_ids": [
+      "302276bf4ca94506a01f8f9c68ec8810"
+    ],
+    "run_id": "5496f2b0f4e24b76b1a561a5f9f87cbc"
+  },
+  "batches": [
+    {
+      "batch": "2024-08",
+      "cases": [
+        "NVDA:0001045810-24-000262"
+      ],
+      "checks": [
+        {
+          "detail": [],
+          "name": "missing_records",
+          "observed": 0,
+          "status": "ok",
+          "threshold": 0,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "error_records",
+          "observed": 0,
+          "status": "ok",
+          "threshold": 0,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "unresolved_citations",
+          "observed": {
+            "citations": 25,
+            "resolvable": 25
+          },
+          "status": "ok",
+          "threshold": "all citations resolve to a supplied chunk of the cited document",
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "zero_current_context",
+          "observed": null,
+          "status": "ok",
+          "threshold": null,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "response_incomplete",
+          "observed": {
+            "checked": 1,
+            "incomplete": 0
+          },
+          "status": "ok",
+          "threshold": "status == \"completed\" and incomplete_details is None",
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "near_output_token_limit",
+          "observed": 4313,
+          "status": "ok",
+          "threshold": {
+            "limit": 6000,
+            "warn_at": 5400
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "model_metadata_drift",
+          "observed": [
+            "anthropic-fast-v1|candidate-models-v1"
+          ],
+          "status": "ok",
+          "threshold": {
+            "catalog_versions": [
+              "candidate-models-v1"
+            ],
+            "model": "anthropic-fast-v1"
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "live_usage_metadata_missing",
+          "observed": {
+            "live_completed": 1,
+            "missing_usage_or_cost": 0
+          },
+          "status": "ok",
+          "threshold": 0,
+          "tier": "warning"
+        },
+        {
+          "detail": "Quote textual anchoring only; not evidence correctness.",
+          "name": "textual_anchoring_rate",
+          "observed": {
+            "anchored": 22,
+            "rate": 0.88,
+            "resolvable": 25
+          },
+          "status": "ok",
+          "threshold": {
+            "floor": 0.5,
+            "min_resolvable": 20
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": null,
+          "name": "latency_per_output_token",
+          "observed": {
+            "live_cases": 1,
+            "median_ms_per_output_token": 15.304554834222118
+          },
+          "status": "ok",
+          "threshold": {
+            "baseline_median": 18.936245311902027,
+            "baseline_source": "historical_generation",
+            "max_ratio": 2.0
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": null,
+          "name": "mean_input_tokens_per_case",
+          "observed": {
+            "cases": 1,
+            "mean": 15415,
+            "ratio": 1.1773666567658168,
+            "sources": [
+              "live"
+            ]
+          },
+          "status": "insufficient_data",
+          "threshold": {
+            "baseline_mean": 13092.777777777777,
+            "max_ratio": 1.25,
+            "min_cases": 3
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "completed_empty",
+          "observed": 0,
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "findings_per_case",
+          "observed": {
+            "completed": 1,
+            "findings": 11,
+            "per_case": {
+              "NVDA:0001045810-24-000262": 11
+            }
+          },
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "current_context_truncation",
+          "observed": {
+            "completed": 1,
+            "min_coverage": 0.5714285714285714,
+            "truncated": 1
+          },
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "prior_chunks_supplied",
+          "observed": [
+            12
+          ],
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        }
+      ],
+      "operational": {
+        "historical_cost_usd": null,
+        "input_tokens": 15415,
+        "live_cost_usd": 0.11094000000000001,
+        "live_latency_ms_mean": 66008.545,
+        "live_latency_ms_median": 66008.545,
+        "note": "Historical cache metadata describes the original generation, not this replay.",
+        "output_tokens": 4313,
+        "sources": {
+          "live": 1
+        },
+        "total_tokens": 19728
+      },
+      "status": "ok"
+    },
+    {
+      "batch": "2024-09",
+      "cases": [],
+      "checks": [],
+      "operational": {
+        "historical_cost_usd": null,
+        "input_tokens": null,
+        "live_cost_usd": null,
+        "live_latency_ms_mean": null,
+        "live_latency_ms_median": null,
+        "note": "Historical cache metadata describes the original generation, not this replay.",
+        "output_tokens": null,
+        "sources": {},
+        "total_tokens": null
+      },
+      "status": "no_expected_filings"
+    },
+    {
+      "batch": "2024-10",
+      "cases": [],
+      "checks": [],
+      "operational": {
+        "historical_cost_usd": null,
+        "input_tokens": null,
+        "live_cost_usd": null,
+        "live_latency_ms_mean": null,
+        "live_latency_ms_median": null,
+        "note": "Historical cache metadata describes the original generation, not this replay.",
+        "output_tokens": null,
+        "sources": {},
+        "total_tokens": null
+      },
+      "status": "no_expected_filings"
+    },
+    {
+      "batch": "2024-11",
+      "cases": [
+        "NVDA:0001045810-24-000300",
+        "NVDA:0001045810-24-000315"
+      ],
+      "checks": [
+        {
+          "detail": [],
+          "name": "missing_records",
+          "observed": 0,
+          "status": "ok",
+          "threshold": 0,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "error_records",
+          "observed": 0,
+          "status": "ok",
+          "threshold": 0,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "unresolved_citations",
+          "observed": {
+            "citations": 22,
+            "resolvable": 22
+          },
+          "status": "ok",
+          "threshold": "all citations resolve to a supplied chunk of the cited document",
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "zero_current_context",
+          "observed": null,
+          "status": "ok",
+          "threshold": null,
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "response_incomplete",
+          "observed": {
+            "checked": 2,
+            "incomplete": 0
+          },
+          "status": "ok",
+          "threshold": "status == \"completed\" and incomplete_details is None",
+          "tier": "invariant"
+        },
+        {
+          "detail": [],
+          "name": "near_output_token_limit",
+          "observed": 3961,
+          "status": "ok",
+          "threshold": {
+            "limit": 6000,
+            "warn_at": 5400
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "model_metadata_drift",
+          "observed": [
+            "anthropic-fast-v1|candidate-models-v1"
+          ],
+          "status": "ok",
+          "threshold": {
+            "catalog_versions": [
+              "candidate-models-v1"
+            ],
+            "model": "anthropic-fast-v1"
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "live_usage_metadata_missing",
+          "observed": {
+            "live_completed": 2,
+            "missing_usage_or_cost": 0
+          },
+          "status": "ok",
+          "threshold": 0,
+          "tier": "warning"
+        },
+        {
+          "detail": "Quote textual anchoring only; not evidence correctness.",
+          "name": "textual_anchoring_rate",
+          "observed": {
+            "anchored": 21,
+            "rate": 0.9545454545454546,
+            "resolvable": 22
+          },
+          "status": "ok",
+          "threshold": {
+            "floor": 0.5,
+            "min_resolvable": 20
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": null,
+          "name": "latency_per_output_token",
+          "observed": {
+            "live_cases": 2,
+            "median_ms_per_output_token": 17.590520808404627
+          },
+          "status": "ok",
+          "threshold": {
+            "baseline_median": 18.936245311902027,
+            "baseline_source": "historical_generation",
+            "max_ratio": 2.0
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": null,
+          "name": "mean_input_tokens_per_case",
+          "observed": {
+            "cases": 2,
+            "mean": 12038.5,
+            "ratio": 0.91947638647261,
+            "sources": [
+              "live"
+            ]
+          },
+          "status": "insufficient_data",
+          "threshold": {
+            "baseline_mean": 13092.777777777777,
+            "max_ratio": 1.25,
+            "min_cases": 3
+          },
+          "tier": "warning"
+        },
+        {
+          "detail": [],
+          "name": "completed_empty",
+          "observed": 0,
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "findings_per_case",
+          "observed": {
+            "completed": 2,
+            "findings": 11,
+            "per_case": {
+              "NVDA:0001045810-24-000300": 2,
+              "NVDA:0001045810-24-000315": 9
+            }
+          },
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "current_context_truncation",
+          "observed": {
+            "completed": 2,
+            "min_coverage": 0.5714285714285714,
+            "truncated": 1
+          },
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        },
+        {
+          "detail": null,
+          "name": "prior_chunks_supplied",
+          "observed": [
+            12
+          ],
+          "status": "info",
+          "threshold": null,
+          "tier": "info"
+        }
+      ],
+      "operational": {
+        "historical_cost_usd": null,
+        "input_tokens": 24077,
+        "live_cost_usd": 0.146856,
+        "live_latency_ms_mean": 41357.583,
+        "live_latency_ms_median": 41357.583,
+        "note": "Historical cache metadata describes the original generation, not this replay.",
+        "output_tokens": 4975,
+        "sources": {
+          "live": 2
+        },
+        "total_tokens": 29052
+      },
+      "status": "ok"
+    }
+  ],
+  "cases": [
+    {
+      "anchored_citations": 22,
+      "anchored_rate_of_resolvable": 0.88,
+      "available_at": "2024-08-28T20:21:16+00:00",
+      "batch": "2024-08",
+      "case_id": "NVDA:0001045810-24-000262",
+      "completed_empty": false,
+      "current_chunks_supplied": 16,
+      "current_chunks_total": 28,
+      "current_citations": 19,
+      "current_context_coverage": 0.5714285714285714,
+      "current_context_truncated": true,
+      "eligible_history_documents": 24,
+      "filing_id": "0001045810-24-000262",
+      "finding_count": 11,
+      "operational": {
+        "catalog_version": "candidate-models-v1",
+        "cost_usd": 0.11094000000000001,
+        "incomplete_details": null,
+        "input_tokens": 15415,
+        "latency_ms": 66008.545,
+        "output_tokens": 4313,
+        "reported_model": "anthropic-fast-v1",
+        "requested_model": "anthropic-fast-v1",
+        "resolved_model": null,
+        "response_status": "completed",
+        "source": "live",
+        "total_tokens": 19728
+      },
+      "output_state": "completed",
+      "prior_chunks_supplied": 12,
+      "prior_citations": 6,
+      "resolvable_citation_rate": 1.0,
+      "resolvable_citations": 25,
+      "total_citations": 25,
+      "unanchored_resolvable_citations": [
+        {
+          "chunk_id": "NVDA:0001045810-24-000262:q2fy25pr.htm:47ce25e82ab5",
+          "document_id": "NVDA:0001045810-24-000262:q2fy25pr.htm",
+          "finding_index": 0,
+          "side": "current"
+        },
+        {
+          "chunk_id": "NVDA:0001045810-24-000262:q2fy25cfocommentary.htm:1d6534e56314",
+          "document_id": "NVDA:0001045810-24-000262:q2fy25cfocommentary.htm",
+          "finding_index": 5,
+          "side": "current"
+        },
+        {
+          "chunk_id": "NVDA:0001045810-24-000113:q1fy25cfocommentary.htm:6f0e5c791530",
+          "document_id": "NVDA:0001045810-24-000113:q1fy25cfocommentary.htm",
+          "finding_index": 9,
+          "side": "prior"
+        }
+      ],
+      "unresolved_citations": []
+    },
+    {
+      "anchored_citations": 4,
+      "anchored_rate_of_resolvable": 1.0,
+      "available_at": "2024-11-07T21:35:26+00:00",
+      "batch": "2024-11",
+      "case_id": "NVDA:0001045810-24-000300",
+      "completed_empty": false,
+      "current_chunks_supplied": 3,
+      "current_chunks_total": 3,
+      "current_citations": 3,
+      "current_context_coverage": 1.0,
+      "current_context_truncated": false,
+      "eligible_history_documents": 34,
+      "filing_id": "0001045810-24-000300",
+      "finding_count": 2,
+      "operational": {
+        "catalog_version": "candidate-models-v1",
+        "cost_usd": 0.041322,
+        "incomplete_details": null,
+        "input_tokens": 8704,
+        "latency_ms": 19487.566,
+        "output_tokens": 1014,
+        "reported_model": "anthropic-fast-v1",
+        "requested_model": "anthropic-fast-v1",
+        "resolved_model": null,
+        "response_status": "completed",
+        "source": "live",
+        "total_tokens": 9718
+      },
+      "output_state": "completed",
+      "prior_chunks_supplied": 12,
+      "prior_citations": 1,
+      "resolvable_citation_rate": 1.0,
+      "resolvable_citations": 4,
+      "total_citations": 4,
+      "unanchored_resolvable_citations": [],
+      "unresolved_citations": []
+    },
+    {
+      "anchored_citations": 17,
+      "anchored_rate_of_resolvable": 0.9444444444444444,
+      "available_at": "2024-11-20T21:21:20+00:00",
+      "batch": "2024-11",
+      "case_id": "NVDA:0001045810-24-000315",
+      "completed_empty": false,
+      "current_chunks_supplied": 16,
+      "current_chunks_total": 28,
+      "current_citations": 16,
+      "current_context_coverage": 0.5714285714285714,
+      "current_context_truncated": true,
+      "eligible_history_documents": 35,
+      "filing_id": "0001045810-24-000315",
+      "finding_count": 9,
+      "operational": {
+        "catalog_version": "candidate-models-v1",
+        "cost_usd": 0.105534,
+        "incomplete_details": null,
+        "input_tokens": 15373,
+        "latency_ms": 63227.6,
+        "output_tokens": 3961,
+        "reported_model": "anthropic-fast-v1",
+        "requested_model": "anthropic-fast-v1",
+        "resolved_model": null,
+        "response_status": "completed",
+        "source": "live",
+        "total_tokens": 19334
+      },
+      "output_state": "completed",
+      "prior_chunks_supplied": 12,
+      "prior_citations": 2,
+      "resolvable_citation_rate": 1.0,
+      "resolvable_citations": 18,
+      "total_citations": 18,
+      "unanchored_resolvable_citations": [
+        {
+          "chunk_id": "NVDA:0001045810-24-000315:q3fy25cfocommentary.htm:ee74f5c87820",
+          "document_id": "NVDA:0001045810-24-000315:q3fy25cfocommentary.htm",
+          "finding_index": 3,
+          "side": "current"
+        }
+      ],
+      "unresolved_citations": []
+    }
+  ],
+  "checks": [
+    {
+      "detail": null,
+      "name": "run_status",
+      "observed": {
+        "errors": 0,
+        "status": "completed"
+      },
+      "status": "ok",
+      "threshold": {
+        "errors": 0,
+        "status": "completed"
+      },
+      "tier": "invariant"
+    },
+    {
+      "detail": null,
+      "name": "duplicate_or_unexpected_records",
+      "observed": {
+        "duplicates": [],
+        "unexpected": []
+      },
+      "status": "ok",
+      "threshold": "none",
+      "tier": "invariant"
+    },
+    {
+      "detail": {},
+      "name": "config_drift",
+      "observed": [],
+      "status": "ok",
+      "threshold": [
+        "prompt_hash",
+        "model",
+        "pipeline_version",
+        "parser_version",
+        "history_chunks",
+        "current_char_budget"
+      ],
+      "tier": "invariant"
+    },
+    {
+      "detail": "Report-only: the hash also covers analysis-only modules.",
+      "name": "implementation_hash",
+      "observed": {
+        "baseline": "ebfdf7eb15afc9b7415802efb6e10978cf456832273b2fd9f804c637ff4abc53",
+        "run": "fff7bd73452838119c2d5565ed59d81a066340bc9f2c68c4a5d15be5760480ce",
+        "same": false
+      },
+      "status": "info",
+      "threshold": null,
+      "tier": "info"
+    },
+    {
+      "detail": [],
+      "name": "missing_records",
+      "observed": 0,
+      "status": "ok",
+      "threshold": 0,
+      "tier": "invariant"
+    },
+    {
+      "detail": [],
+      "name": "error_records",
+      "observed": 0,
+      "status": "ok",
+      "threshold": 0,
+      "tier": "invariant"
+    },
+    {
+      "detail": [],
+      "name": "unresolved_citations",
+      "observed": {
+        "citations": 47,
+        "resolvable": 47
+      },
+      "status": "ok",
+      "threshold": "all citations resolve to a supplied chunk of the cited document",
+      "tier": "invariant"
+    },
+    {
+      "detail": [],
+      "name": "zero_current_context",
+      "observed": null,
+      "status": "ok",
+      "threshold": null,
+      "tier": "invariant"
+    },
+    {
+      "detail": [],
+      "name": "response_incomplete",
+      "observed": {
+        "checked": 3,
+        "incomplete": 0
+      },
+      "status": "ok",
+      "threshold": "status == \"completed\" and incomplete_details is None",
+      "tier": "invariant"
+    },
+    {
+      "detail": [],
+      "name": "near_output_token_limit",
+      "observed": 4313,
+      "status": "ok",
+      "threshold": {
+        "limit": 6000,
+        "warn_at": 5400
+      },
+      "tier": "warning"
+    },
+    {
+      "detail": [],
+      "name": "model_metadata_drift",
+      "observed": [
+        "anthropic-fast-v1|candidate-models-v1"
+      ],
+      "status": "ok",
+      "threshold": {
+        "catalog_versions": [
+          "candidate-models-v1"
+        ],
+        "model": "anthropic-fast-v1"
+      },
+      "tier": "warning"
+    },
+    {
+      "detail": [],
+      "name": "live_usage_metadata_missing",
+      "observed": {
+        "live_completed": 3,
+        "missing_usage_or_cost": 0
+      },
+      "status": "ok",
+      "threshold": 0,
+      "tier": "warning"
+    },
+    {
+      "detail": "Quote textual anchoring only; not evidence correctness.",
+      "name": "textual_anchoring_rate",
+      "observed": {
+        "anchored": 43,
+        "rate": 0.9148936170212766,
+        "resolvable": 47
+      },
+      "status": "ok",
+      "threshold": {
+        "floor": 0.5,
+        "min_resolvable": 20
+      },
+      "tier": "warning"
+    },
+    {
+      "detail": null,
+      "name": "latency_per_output_token",
+      "observed": {
+        "live_cases": 3,
+        "median_ms_per_output_token": 15.962534713456197
+      },
+      "status": "ok",
+      "threshold": {
+        "baseline_median": 18.936245311902027,
+        "baseline_source": "historical_generation",
+        "max_ratio": 2.0
+      },
+      "tier": "warning"
+    },
+    {
+      "detail": null,
+      "name": "mean_input_tokens_per_case",
+      "observed": {
+        "cases": 3,
+        "mean": 13164,
+        "ratio": 1.005439809903679,
+        "sources": [
+          "live"
+        ]
+      },
+      "status": "ok",
+      "threshold": {
+        "baseline_mean": 13092.777777777777,
+        "max_ratio": 1.25,
+        "min_cases": 3
+      },
+      "tier": "warning"
+    },
+    {
+      "detail": [],
+      "name": "completed_empty",
+      "observed": 0,
+      "status": "info",
+      "threshold": null,
+      "tier": "info"
+    },
+    {
+      "detail": null,
+      "name": "findings_per_case",
+      "observed": {
+        "completed": 3,
+        "findings": 22,
+        "per_case": {
+          "NVDA:0001045810-24-000262": 11,
+          "NVDA:0001045810-24-000300": 2,
+          "NVDA:0001045810-24-000315": 9
+        }
+      },
+      "status": "info",
+      "threshold": null,
+      "tier": "info"
+    },
+    {
+      "detail": null,
+      "name": "current_context_truncation",
+      "observed": {
+        "completed": 3,
+        "min_coverage": 0.5714285714285714,
+        "truncated": 2
+      },
+      "status": "info",
+      "threshold": null,
+      "tier": "info"
+    },
+    {
+      "detail": null,
+      "name": "prior_chunks_supplied",
+      "observed": [
+        12
+      ],
+      "status": "info",
+      "threshold": null,
+      "tier": "info"
+    }
+  ],
+  "monitoring_schema": 1,
+  "operational": {
+    "historical_cost_usd": null,
+    "input_tokens": 39492,
+    "live_cost_usd": 0.257796,
+    "live_latency_ms_mean": 49574.57033333333,
+    "live_latency_ms_median": 63227.6,
+    "note": "Historical cache metadata describes the original generation, not this replay.",
+    "output_tokens": 9288,
+    "sources": {
+      "live": 3
+    },
+    "total_tokens": 48780
+  },
+  "run": {
+    "config": {
+      "current_char_budget": 24000,
+      "history_chunks": 12,
+      "implementation_hash": "fff7bd73452838119c2d5565ed59d81a066340bc9f2c68c4a5d15be5760480ce",
+      "model": "anthropic-fast-v1",
+      "parser_version": "html-text-v1",
+      "pipeline_version": "net-new-v2",
+      "prompt_hash": "ac4036f632796348ca1ff409b55bbe3dd8523d31be3f35f0b97728996832930e",
+      "provider": "litellm"
+    },
+    "dataset_fingerprint": "3a95c4844cf2a8c0d421991c28b45042fbfd2844cd9f5dcae2c1cdc0f59ab756",
+    "execution_mode": "litellm",
+    "run_id": "0375449420714d268826091ec0646f29",
+    "status": "completed"
+  },
+  "status": "ok",
+  "thresholds": {
+    "anchoring_floor": 0.5,
+    "anchoring_min_resolvable": 20,
+    "input_token_min_cases": 3,
+    "input_token_ratio": 1.25,
+    "latency_ratio": 2.0,
+    "max_output_tokens": 6000,
+    "near_limit_tokens": 5400
+  }
+}
