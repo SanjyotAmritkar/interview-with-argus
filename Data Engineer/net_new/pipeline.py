@@ -82,7 +82,7 @@ def config(provider: str, model: str | None = None) -> dict:
             if provider == "openai"
             else "extractive-preview"
         ),
-        "history_chunks": 12,
+        "history_chunks": 24,
         "current_char_budget": 24000,
     }
     return settings
