@@ -246,6 +246,28 @@ def test_config_drift_fails_but_implementation_hash_is_report_only(runs, dataset
     assert drift["status"] == "alert" and drift["observed"] == ["history_chunks"]
 
 
+def test_new_corpus_is_not_config_drift_but_must_match_monitored_dataset(runs, tmp_path):
+    base = runs[0]
+    other = Dataset(DEMO)
+    other.manifest.description = "A different, valid corpus revision"
+    assert other.fingerprint != Dataset(DEMO).fingerprint
+    run = tmp_path / "other-corpus-run"
+    run_replay(other, "extractive-preview", run)
+
+    report = monitor(run, base, other)
+    assert check(report, "config_drift")["status"] == "ok"
+    assert report["run"]["dataset_fingerprint"] == other.fingerprint
+    assert report["baseline"]["dataset_fingerprint"] == Dataset(DEMO).fingerprint
+
+    # A run must still belong to the corpus passed for monitoring.
+    with pytest.raises(ValueError, match="does not match --dataset"):
+        monitor(run, base, Dataset(DEMO))
+
+    rewrite(run, edit_meta=lambda m: m["config"].update(history_chunks=24))
+    drift = check(monitor(run, base, other), "config_drift")
+    assert drift["status"] == "alert" and drift["observed"] == ["history_chunks"]
+
+
 def test_monthly_batches_are_chronological_and_keep_empty_months():
     def case(key, when):
         return Case(key=key, filing_id=key, available_at=when, record=None)

@@ -34,6 +34,8 @@ INPUT_TOKEN_RATIO = 1.25
 INPUT_TOKEN_MIN_CASES = 3
 # Selected-configuration fields compared with the frozen baseline. The
 # implementation hash covers analysis-only modules too, so it is report-only.
+# The dataset fingerprint identifies the corpus, not the configuration: it is
+# validated against --dataset in monitor() and recorded, never compared here.
 FROZEN_CONFIG = [
     "prompt_hash",
     "model",
@@ -438,11 +440,6 @@ def run_checks(meta: dict, records: list[dict], expected: set[str], profile: Bas
         for k in FROZEN_CONFIG
         if config.get(k) != profile.config.get(k)
     }
-    if meta["dataset_fingerprint"] != profile.dataset_fingerprint:
-        drift["dataset_fingerprint"] = {
-            "run": meta["dataset_fingerprint"],
-            "frozen": profile.dataset_fingerprint,
-        }
     return [
         Check(
             "run_status",
@@ -463,7 +460,7 @@ def run_checks(meta: dict, records: list[dict], expected: set[str], profile: Bas
             "invariant",
             _alert(bool(drift)),
             sorted(drift),
-            FROZEN_CONFIG + ["dataset_fingerprint"],
+            FROZEN_CONFIG,
             drift,
         ),
         Check(
